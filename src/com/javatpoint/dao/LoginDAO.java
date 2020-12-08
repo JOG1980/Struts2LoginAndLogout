@@ -18,10 +18,11 @@ public class LoginDAO {
 			//Connection con=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","system","oracle");
 			
 			Class.forName("org.mariadb.jdbc.Driver"); 
-			//Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/gmocontrolactivo?user=gmocontrolactivo_usuario&password=gmocontrolactivo_password");
+			//Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/test?user=gmocontrolactivo_usuario&password=gmocontrolactivo_password");
 			Connection con = DriverManager.getConnection("jdbc:mariadb://localhost:3306/test","gmocontrolactivo_usuario","gmocontrolactivo_password");
 		    
-			PreparedStatement ps=con.prepareStatement("select * from usuarios where name='jorge' and password='9dyap'");  
+			//los signos de ? son sustituidos por las posiciones definidas por ps.setString()
+			PreparedStatement ps=con.prepareStatement("select * from usuarios where nombre=? and password=?");  
 			
 			ps.setString(1,username);  
 			ps.setString(2,userpass);  
